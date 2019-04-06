@@ -1,6 +1,6 @@
 {% extends 'main/base.html' %}
 
-{% block title %} {{ title }} {% endblock %}
+{% block title %} Search {% endblock %}
 
 {% block main %}
 	<header>
@@ -12,7 +12,23 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{% url 'profile' %}">Profile</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'signout' %}">Logout</a>
+				</li>
 			</ul>
 		</nav>
 	</header>
+	<div>
+		<form action="{% url 'results' %}" method="post">
+			{% csrf_token %}
+			<div id="search" class="row no-gutters">
+				<div class="col-md-10">
+					<input name="search" type="text" class="form-control form-control-lg" placeholder="Search for books by their isbns, names, writers or the year they were published!">
+				</div>
+				<div class="col-md-2">
+					<button class="btn btn-primary btn-lg" type="submit">Search</button>
+				</div>
+			</div>
+		</form>
+	</div>
 {% endblock %}

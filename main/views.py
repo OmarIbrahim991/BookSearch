@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from .models import Book
 
 # Create your views here.
 def index(request):
@@ -15,9 +16,7 @@ def signup(request):
 
 def search(request):
     if request.user.is_authenticated:
-        context = dict()
-        context["title"] = request.user.username + "-Search"
-        return render(request, "main/search.html", context)
+        return render(request, "main/search.html")
     return HttpResponseRedirect(reverse("index"))
 
 def profile(request):
@@ -28,7 +27,24 @@ def profile(request):
     return render(request, "main/profile.html", context)
 
 def results(request):
-    return
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("index"))
+    context = dict()
+    try:
+        context["text"] = request.POST["search"]
+    except:
+        return HttpResponseRedirect(reverse("index"))
+    context["result"] = Book.objects.filter(isbn__icontains = context["text"]) \
+    | Book.objects.filter(title__icontains = context["text"]) \
+    | Book.objects.filter(author__icontains = context["text"])
+    try:
+        year = int(context["text"])
+        context["result"] = context["result"] | Book.objects.filter(year=year)
+    except:
+        context["result"] = context["result"].order_by("-year")
+        return render(request, "main/results.html", context)
+    context["result"] = context["result"].order_by("-year")
+    return render(request, "main/results.html", context)
 
 def book(request):
     return

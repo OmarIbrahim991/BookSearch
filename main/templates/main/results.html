@@ -1,3 +1,27 @@
 {% extends 'main/base.html' %}
 
-{% block title %} {{ title }} {% endblock %}
+{% block title %} Search Results for {{ text }} {% endblock %}
+
+{% block main %}
+	<h4>Search results for "{{ text }}":</h4>
+	<table class="table table-hover table-striped table-responsive-sm">
+		<tr>
+			<th>Count</th>
+			<th>ISBN</th>
+			<th>Book</th>
+			<th>Author</th>
+			<th>Publish Year</th>
+		</tr>
+		{% if result %}
+		{% for row in result %}
+			<tr>
+				<td>{{ forloop.counter }}</td>
+				<td>{{ row.isbn }}</td>
+				<td><a href="#">{{ row.title }}</a></td>
+				<td>{{ row.author }}</td>
+				<td>{{ row.year }}</td>
+			</tr>
+		{% endfor %}
+		{% endif %}
+	</table>
+{% endblock %}

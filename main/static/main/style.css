@@ -37,11 +37,19 @@
 	text-decoration: underline;
 }
 
+header {
+	background-color: #000;
+}
+
 #message {
 	color: red;
 	background-color: yellow;
 }
 
-.right {
-	float: right;
+#search {
+	margin: 10%;
+}
+
+table {
+	text-align: center;
 }
