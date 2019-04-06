@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block main %}
+	<header>
+		<nav>
+			<ul class="nav nav-pills justify-content-center">
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'search' %}">Search</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" href="{% url 'profile' %}">Profile</a>
+				</li>
+			</ul>
+		</nav>
+		<a class="nav-link active right" href="{% url 'signout' %}">Logout</a>
+	</header>
+{% endblock %}

@@ -1,0 +1,47 @@
+.login-container{
+	width: 100%;
+	padding: 2%;
+}
+
+.login-form-1{
+    padding: 5%;
+	text-align: center;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.15), 0 9px 26px 0 rgba(0, 0, 0, 0.12);
+}
+
+.login-form-1 h3{
+    text-align: center;
+    color: #333;
+	text-transform: capitalize;
+}
+
+.login-container form{
+    padding: 10%;
+}
+
+.btnSubmit{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+
+.login-form-1 .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #0062cc;
+}
+
+.form-link:hover {
+	text-decoration: underline;
+}
+
+#message {
+	color: red;
+	background-color: yellow;
+}
+
+.right {
+	float: right;
+}
