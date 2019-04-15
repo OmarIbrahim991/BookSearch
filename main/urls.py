@@ -7,5 +7,5 @@ urlpatterns = [
         path("search/", views.search, name="search"),
         path("profile/", views.profile, name="profile"),
         path("results/", views.results, name="results"),
-        path("book/", views.book, name="book"),
+        path("book/<str:isbn>", views.book, name="book"),
 ]

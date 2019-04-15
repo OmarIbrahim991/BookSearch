@@ -1,3 +1,17 @@
 {% extends 'main/base.html' %}
 
-{% block title %} {{ title }} {% endblock %}
+{% block title %} Book {{ isbn }} {% endblock %}
+
+{% block main %}
+	<main>
+		<ul>
+			{% for key, value in details.items %}
+			<li>{{ key }}: {{ value }}</li>
+			{% endfor %}
+		</ul>
+	</main>
+	<footer>
+		<a href="{% url 'search' %}">Go Back</a>
+	</footer>
+	
+{% endblock %}

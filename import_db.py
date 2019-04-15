@@ -12,7 +12,6 @@ for row in table:
     title = row[1]
     author = row[2]
     year = int(row[3])
-    book = Book(isbn, title, author, year)
-    book.save()
+    book = Book(isbn, title, author, year).save()
     count += 1
 f.close()
