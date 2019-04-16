@@ -51,7 +51,9 @@ def results(request):
 def book(request, isbn):
     context = dict()
     context["isbn"] = isbn
-    good_reads = environ.get("GOOD_READS").strip('\"')
+    good_reads = environ.get("GOOD_READS")
+    if type(good_reads) == str:
+        good_reads = good_reads.strip('\"')
     resp = get("https://www.goodreads.com/book/review_counts.json", params={"key": good_reads, "isbns": isbn})
     if resp.ok:
         context["details"] = resp.json()['books'][0]
